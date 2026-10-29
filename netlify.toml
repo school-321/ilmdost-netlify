@@ -1,0 +1,4 @@
+# Netlify builds static HTML in public/ and deploys the JavaScript function.
+[build]
+  publish = "public"
+  functions = "netlify/functions"

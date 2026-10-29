@@ -1,0 +1,10 @@
+# Never upload local secrets or virtual environments
+.env
+.env.*
+!.env.example
+venv/
+.venv/
+__pycache__/
+*.pyc
+node_modules/
+.netlify/
