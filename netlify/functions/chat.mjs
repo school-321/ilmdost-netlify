@@ -20,6 +20,9 @@ function json(data, status = 200) {
 }
 
 export default async function handler(request) {
+  if (request.method === "GET") {
+    return json({ status: "online", apiConfigured: Boolean(process.env.GROQ_API_KEY) });
+  }
   if (request.method !== "POST") {
     return json({ error: "Use POST to send a chat message." }, 405);
   }
