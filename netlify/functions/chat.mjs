@@ -21,13 +21,13 @@ function json(data, status = 200) {
 
 export default async function handler(request) {
   if (request.method === "GET") {
-    return json({ status: "online", apiConfigured: Boolean(process.env.GROQ_API_KEY) });
+    return json({ status: "online", apiConfigured: Boolean((process.env.GROQ_API_KEY || process.env.GROK_API_KEY)) });
   }
   if (request.method !== "POST") {
     return json({ error: "Use POST to send a chat message." }, 405);
   }
 
-  const apiKey = process.env.GROQ_API_KEY;
+  const apiKey = (process.env.GROQ_API_KEY || process.env.GROK_API_KEY);
   if (!apiKey) {
     return json({ error: "Ilm Dost is not configured yet. Add GROQ_API_KEY in Netlify settings." }, 503);
   }
